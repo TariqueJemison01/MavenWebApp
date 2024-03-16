@@ -4,7 +4,7 @@ FROM tomcat:10.0.23-jdk11
 # Set the working directory inside the container
 WORKDIR /usr/local/tomcat/webapps
 
-# Copy your MavenWebProject.war file into the webapps directory
+# Copy MavenWebProject.war file into the webapps directory
 COPY target/MavenWebProject.war .
 
 # Expose port 8080 (Tomcat default port)
