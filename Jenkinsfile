@@ -7,18 +7,18 @@ pipeline{
         stage('Checkout & Build Maven Project') {
             steps{
                 checkout scm
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
         stage('Code Coverage (JaCoCo)') {
             steps {
-                sh 'mvn jacoco:prepare-agent test jacoco:report'
+                bat 'mvn jacoco:prepare-agent test jacoco:report'
             }
         }
         stage('Docker Build') {
             steps{
                 script{
-                    sh 'docker build -t tariquejemison/lab3-maven-webapp01 .'
+                    bat 'docker build -t tariquejemison/lab3-maven-webapp01 .'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline{
                 script{
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'docker login --username ${USERNAME} --password ${PASSWORD}'
+                    bat 'docker login --username ${USERNAME} --password ${PASSWORD}'
                     }
                 }
             }
@@ -36,7 +36,7 @@ pipeline{
             steps{
                 script{
 
-                    sh 'docker push tariquejemison/lab3-maven-webapp01:latest'
+                    bat 'docker push tariquejemison/lab3-maven-webapp01:latest'
                 }
             }
   		}
