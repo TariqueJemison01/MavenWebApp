@@ -6,7 +6,7 @@ pipeline{
     stages{
     stage('Build Maven Project') {
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/TariqueJemison01/MavenWebApp']])
+                checkout scm
                 sh 'mvn clean install'
             }
         }
