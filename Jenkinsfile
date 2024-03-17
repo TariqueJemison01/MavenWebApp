@@ -7,7 +7,7 @@ pipeline{
         stage('Checkout & Build Maven Project') {
             steps{
                 git branch: 'main', url: 'https://github.com/TariqueJemison01/MavenWebApp.git'
-                bat 'mvn clean compile'
+                bat 'mvn clean install'
             }
         }
         stage('Code Coverage (JaCoCo)') {
