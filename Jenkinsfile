@@ -27,7 +27,7 @@ pipeline{
                 script{
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    bat 'docker login --username ${USERNAME} --password ${PASSWORD}'
+                    bat 'docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}'
                     }
                 }
             }
