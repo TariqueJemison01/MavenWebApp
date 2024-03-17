@@ -4,7 +4,7 @@ pipeline{
         maven 'MAVEN3'
     }
     stages{
-    stage('Build Maven Project') {
+        stage('Checkout & Build Maven Project') {
             steps{
                 checkout scm
                 sh 'mvn clean install'
