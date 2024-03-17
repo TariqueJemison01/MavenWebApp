@@ -22,16 +22,16 @@ pipeline{
                 }
             }
         }
-        stage('Docker Login') {
-            steps {
-                script {
+        stage('Docker Login'){
+            steps{
+                script{
+
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        bat 'echo %DOCKER_PASSWORD% | docker login --username %DOCKER_USERNAME% --password-stdin'
+                    bat 'docker login --username %DOCKER_USERNAME% --password %DOCKER_PASSWORD%'
                     }
                 }
             }
-        }
-
+  		}
   		stage('Docker Push'){
             steps{
                 script{
